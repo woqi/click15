@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加载更多例子</title>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <style>
+        html,body,h2,p,li,ul{
+            margin: 0;
+            padding: 0;
+        }
+
+        a{
+            color: #333;
+            text-decoration: none;
+        }
+
+        .container{
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .item{
+            margin-top: 20px;
+        }
+
+        .item:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .item .thumb>img{
+            width: 50px;
+            height: 50px;
+        }
+
+        .item .thumb{
+            float: left;
+        }
+
+        .item h2{
+            margin-left: 60px;
+            font-size: 14px;
+        }
+
+        .item p{
+            margin-left: 60px;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #ccc;
+        }
+
+        .load-more{
+            margin-top: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="news">
+            <li class="item">
+                <a href="">
+                    <div class="thumb">
+                    <img src="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3057294045,2203574391&fm=58" alt="">
+                    </div>
+                    <h2>宁波江北一厂房突发爆炸30多人送医 现场画面曝光</h2>
+                    <p>宁波江北区发布消息称，截至26日20:50，事件造成2人死...</p>
+                </a>    
+            </li>
+            <li class="item">
+                <a href="">
+                    <div class="thumb">
+                    <img src="http://inews.gtimg.com/newsapp_match/0/2357306914/0" alt="">
+                    </div>
+                    <h2>重温“厚德、包容”的北京精神：整治行动要力度也要温度</h2>
+                    <p>18日晚，北京大兴区发生重大火灾事故，致19死8伤。火灾、整...</p>
+                </a>    
+            </li>
+        </ul>
+        <button class="load-more">加载更多</button>
+    </div>
+    <script>
+        $('.load-more').on('click', function(){
+            $.get('/getNews').done(function(news){
+                appendHtml(news)
+            })
+        })
+
+
+    </script>
+    
+</body>
+</html>
